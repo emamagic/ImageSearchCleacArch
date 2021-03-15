@@ -1,19 +1,13 @@
-package com.example.imagesearchapp.gallery
+package com.example.imagesearchapp.ui.gallery
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.common.ApiWrapper
 import com.example.imagesearchapp.base.BaseFragment
 import com.example.imagesearchapp.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class GalleryFragment: BaseFragment<FragmentGalleryBinding>() {
@@ -27,14 +21,6 @@ class GalleryFragment: BaseFragment<FragmentGalleryBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-/*        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.loadingStatee.collect {
-                if (it) showLoading()
-                Log.e("TAG", "loadingStatee: $it")
-            }
-        }*/
-
 
         viewModel.getUnsplashPhotos()
         viewModel.getPhotos.observe(viewLifecycleOwner){ response ->

@@ -30,7 +30,7 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
   //  protected val baseViewModel: VM by lazy { ViewModelProvider(this).get(getMyViewModel()) }
- //   private val baseViewModel: BaseViewModel by viewModels()
+    private val baseViewModel: BaseViewModel by viewModels()
     private  var _binding: VB? = null
     protected val binding get() = _binding
     private lateinit var loading: FrameLayout
@@ -48,13 +48,6 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading = binding?.root?.rootView?.findViewById(R.id.my_loading)!!
-/*        lifecycleScope.launch {
-            baseViewModel.loadingState.collect{
-                Log.e("TAG", "onViewCreated: loading $it")
-                if (it) showLoading()
-            }
-        }*/
-
 
     }
 
@@ -86,6 +79,9 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
             is ApiWrapper.NetworkError -> {
                 Log.e("TAG", "onViewCreated: net ${response.message}", )
                 toastNet()
+            }
+            is ApiWrapper.Loading -> {
+                showLoading()
             }
         }
     }
@@ -160,6 +156,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.e("TAG", "onDestroyView: ", )
         _binding = null
         if (callback != null){
             callback?.isEnabled = false

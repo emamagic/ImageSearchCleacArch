@@ -14,4 +14,18 @@ sealed class ApiWrapper<T>(
     class ApiError<T>(error: ErrorResponse?, headers: Headers): ApiWrapper<T>(null,error,headers ,null)
     class NetworkError<T>(message: String): ApiWrapper<T>(null,null,null ,message)
     class UnknownError<T>(message: String): ApiWrapper<T>(null,null,null ,message)
+    class Loading<T>: ApiWrapper<T>()
+
+    override fun toString(): String {
+        return when(this){
+            is Success<*> -> "Success [data -> $data]"
+            is ApiError<*> -> "ApiError [error -> $error]"
+            is NetworkError<*> -> "NetworkError [error -> $message]"
+            is UnknownError<*> -> "UnknownError [error -> $message]"
+            else -> " else "
+        }
+    }
 }
+
+val ApiWrapper<*>.succeeded
+    get() = this is ApiWrapper.Success && data != null
