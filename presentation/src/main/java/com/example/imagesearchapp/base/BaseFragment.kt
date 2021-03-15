@@ -30,7 +30,6 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
   //  protected val baseViewModel: VM by lazy { ViewModelProvider(this).get(getMyViewModel()) }
-    private val baseViewModel: BaseViewModel by viewModels()
     private  var _binding: VB? = null
     protected val binding get() = _binding
     private lateinit var loading: FrameLayout
@@ -48,7 +47,6 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading = binding?.root?.rootView?.findViewById(R.id.my_loading)!!
-
     }
 
     protected fun showLoading(isDim: Boolean = false){
