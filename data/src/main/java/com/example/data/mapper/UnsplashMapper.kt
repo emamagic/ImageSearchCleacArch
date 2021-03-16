@@ -1,8 +1,5 @@
 package com.example.data.mapper
 
-import com.example.data.network.response.UnsplashPhotoResponse
-import com.example.domain.entity.UnsplashPhoto
-
 /*
 class UnsplashMapper: EntityMapper<UnsplashPhoto ,UnsplashPhotoResponse> {
     override fun mapFromEntity(entity: UnsplashPhoto): UnsplashPhotoResponse {

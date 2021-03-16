@@ -19,5 +19,10 @@ abstract class UseCaseWithParams<in Params, out R> {
      * @return [R] result of executing this use case
      */
     suspend fun execute(params: Params): R = buildUseCase(params)
+
+
+
+
+
 }
 

@@ -1,8 +1,7 @@
 package com.example.data.network
 
 import com.example.data.util.Constants.ACCESS_KEY
-import com.example.domain.entity.UnsplashPhoto
-import retrofit2.Call
+import com.example.domain.entity.Unsplash
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -14,8 +13,8 @@ interface MyApi {
     @GET("search/photos")
     suspend fun searchPhotos(
         @Query("query") query: String,
-        @Query("page") page: Int = 1,
-        @Query("per_page") perPage: Int = 1
-    ): Response<List<UnsplashPhoto>>
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Unsplash
 
 }

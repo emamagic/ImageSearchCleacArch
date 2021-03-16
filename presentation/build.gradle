@@ -79,10 +79,8 @@ dependencies {
     //----------------- utils -----------------
     implementation utils.sdp
     implementation utils.timber
-    implementation utils.keyboardEvent
-    implementation utils.eventbus
     implementation utils.loggingInterceptor
     implementation utils.multidex
-    //   implementation utils.cookieJar
+    implementation utils.picasso
 
 }

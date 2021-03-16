@@ -1,10 +1,12 @@
 package com.example.domain.repository
 
-import com.example.common.ApiWrapper
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.example.domain.entity.UnsplashPhoto
+import kotlinx.coroutines.flow.Flow
 
 interface IUnsplashRepository {
 
-    suspend fun getUnsplashPhotos(query: String): ApiWrapper<List<UnsplashPhoto>>
+    fun getUnsplashPhotos(query: String): LiveData<PagingData<UnsplashPhoto>>
 
 }

@@ -1,10 +1,17 @@
 package com.example.data.network.paging
 
-/*
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.example.data.network.MyApi
+import com.example.data.util.Constants.PAGING_START_PAGE
+import com.example.domain.entity.UnsplashPhoto
+import retrofit2.HttpException
+import java.io.IOException
+
 class UnsplashPagingSource(
     private val myApi: MyApi,
     private val query: String
-): PagingSource<Int ,UnsplashPhoto>() {
+): PagingSource<Int, UnsplashPhoto>() {
 
     override fun getRefreshKey(state: PagingState<Int, UnsplashPhoto>) = state.anchorPosition
 
@@ -25,4 +32,4 @@ class UnsplashPagingSource(
             LoadResult.Error(exception)
         }
     }
-}*/
+}

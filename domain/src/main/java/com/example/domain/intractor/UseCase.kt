@@ -16,4 +16,5 @@ abstract class UseCase<out R> {
      * @return [R] result of executing this use case
      */
     suspend fun execute(): R = buildUseCase()
+
 }

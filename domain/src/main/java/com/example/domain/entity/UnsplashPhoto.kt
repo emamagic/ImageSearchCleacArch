@@ -1,12 +1,11 @@
 package com.example.domain.entity
 
-
 data class UnsplashPhoto(
     val id: String,
     val description: String?,
     val urls: UnsplashPhotoUrls,
     val user: UnsplashUser
-)  {
+) {
 
     data class UnsplashPhotoUrls(
         val raw: String,
@@ -19,7 +18,7 @@ data class UnsplashPhoto(
     data class UnsplashUser(
         val name: String,
         val username: String
-    )  {
+    ) {
         val attributionUrl get() = "https://unsplash.com/$username?utm_source=ImageSearchApp&utm_medium=referral"
     }
 }

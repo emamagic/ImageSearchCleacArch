@@ -45,6 +45,7 @@ ext {
     multidex_version = '2.0.1'
     loggingInterceptor_version = '4.8.1'
     cookie_version = 'v1.0.1'
+    picasso_version = '2.71828'
 
 
     preDefine = [
@@ -100,6 +101,7 @@ ext {
             loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptor_version",
             multidex           : "androidx.multidex:multidex:$multidex_version",
             cookieJar          : "com.github.franmontiel:PersistentCookieJar:$cookie_version",
+            picasso            : "com.squareup.picasso:picasso:$picasso_version",
     ]
 
     fragment = [
