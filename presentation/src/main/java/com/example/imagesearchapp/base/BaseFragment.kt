@@ -79,7 +79,8 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
                 toastNet()
             }
             is ApiWrapper.Loading -> {
-                showLoading()
+                if (response.isDim) showLoading(true)
+                else showLoading()
             }
         }
     }

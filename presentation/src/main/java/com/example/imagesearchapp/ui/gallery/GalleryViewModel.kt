@@ -22,6 +22,7 @@ class GalleryViewModel @Inject constructor(private val getPhotosUseCase: GetUnsp
 
     fun getUnsplashPhotos(query: String = "cats") = viewModelScope.launch {
         _getPhotos.value = ApiWrapper.Loading()
+        delay(2000)
         _getPhotos.value = getPhotosUseCase.execute(query)
     }
 
