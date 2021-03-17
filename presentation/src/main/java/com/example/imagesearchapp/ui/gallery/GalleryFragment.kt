@@ -34,6 +34,7 @@ class GalleryFragment: BaseFragment<FragmentGalleryBinding>() ,GalleryAdapter.On
         adapter = GalleryAdapter(this)
         binding?.apply {
             recyclerView.setHasFixedSize(true)
+            // when we search the list flash on moment to avoid that
             recyclerView.itemAnimator = null
             recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
                 header = PagingLoadStateAdapter{ adapter.retry() },
