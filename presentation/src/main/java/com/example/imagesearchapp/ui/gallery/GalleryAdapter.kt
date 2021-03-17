@@ -10,8 +10,8 @@ import com.example.imagesearchapp.R
 import com.example.imagesearchapp.databinding.ItemUnsplashPhotoBinding
 import com.squareup.picasso.Picasso
 
-class UnsplashPhotoAdapter() :
-    PagingDataAdapter<UnsplashPhoto, UnsplashPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
+class GalleryAdapter(private val listener: OnItemClickListener) :
+    PagingDataAdapter<UnsplashPhoto, GalleryAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     companion object {
         private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<UnsplashPhoto>() {
@@ -36,17 +36,32 @@ class UnsplashPhotoAdapter() :
     }
 
 
-    class PhotoViewHolder(private val binding: ItemUnsplashPhotoBinding) :
+   inner class PhotoViewHolder(private val binding: ItemUnsplashPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(photo: UnsplashPhoto) {
-            binding.apply {
-                    Picasso.get().load(photo.urls.regular).error(R.drawable.ic_error).into(imageView)
-                    textViewUserName.text = photo.user.username
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION){
+                    val item = getItem(position)
+                    if (item != null) listener.onItemClick(item)
                 }
-
-
-
             }
         }
+
+        fun bind(photo: UnsplashPhoto) {
+            binding.apply {
+                Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_fpPmbK-bebEeX036y7frmW06amtCkG1ew&usqp=CAU").error(R.drawable.ic_error).into(imageView)
+                textViewUserName.text = photo.user.username
+            }
+
+
+        }
     }
+
+    interface OnItemClickListener{
+        fun onItemClick(photo: UnsplashPhoto)
+    }
+
+}
 

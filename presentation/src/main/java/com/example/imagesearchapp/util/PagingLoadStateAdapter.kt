@@ -1,4 +1,4 @@
-package com.example.imagesearchapp.ui.gallery
+package com.example.imagesearchapp.util
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

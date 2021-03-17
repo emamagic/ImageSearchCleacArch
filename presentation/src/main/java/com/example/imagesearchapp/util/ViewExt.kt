@@ -27,3 +27,16 @@ inline fun SearchView.onQueryTextListener(crossinline listener : (String) -> Uni
     })
 
 }
+
+inline fun SearchView.onQueryTextSubmitListener(crossinline listener : (String) -> Unit){
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            listener(query.orEmpty())
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String?) = true
+    })
+
+}
