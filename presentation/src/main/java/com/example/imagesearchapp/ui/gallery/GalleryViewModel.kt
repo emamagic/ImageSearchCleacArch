@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
     private val getPhotosUseCase: GetUnsplashPhotosUseCase,
-    private val state: SavedStateHandle
+    state: SavedStateHandle
     ): ViewModel() {
 
    // private val currentQuery = MutableLiveData(DEFAULT_QUERY)
